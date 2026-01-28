@@ -16,7 +16,7 @@ Verilog helps us to focus on the behaviour and leave the rest to be sorted out l
 
 # Verilog Code Example:
 
-verilog
+`markdown
 module ctr ( input up_down,
                    clk,
 		           rstn,
