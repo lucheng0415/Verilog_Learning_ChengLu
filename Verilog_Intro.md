@@ -15,7 +15,7 @@ For example, the design of a D flip-flop would require the knowledge of how the 
 Verilog helps us to focus on the behaviour and leave the rest to be sorted out later. 
 
 # Verilog Code Example:
-(```verilog 
+```verilog 
 module ctr ( input up_down,
                    clk,
 		           rstn,
@@ -31,7 +31,7 @@ always @ (posedge clk)
                 out <= out - 1;
         end
 endmodule
-)
+```
 
 The simple example shown above illustrates how all the physical implementation details (interconnection of underlying logic gates like NAND and NOR) have been hidden while still providing a clear idea of how the counter functions.
 
