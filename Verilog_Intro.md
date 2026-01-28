@@ -52,5 +52,6 @@ module tb;
 		// For our purposes, we'll simply display "Hello World"
 		$display ("Hello World !");
 endmodule
+```
 
 A module called tb with no input-output ports act as the top module for the simulation. The initial block starts and executes the first statement at time 0 units. $display is a Verilog system task used to display a formatted string to the console and cannot be synthesized into hardware. Its primarily used to help with testbench and design debug. In this case, the text message displayed onto the screen is "Hello World !".
