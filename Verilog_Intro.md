@@ -15,7 +15,7 @@ For example, the design of a D flip-flop would require the knowledge of how the 
 Verilog helps us to focus on the behaviour and leave the rest to be sorted out later. 
 
 # Verilog Code Example:
-(
+(`verilog
 module ctr ( input up_down,
                    clk,
 		           rstn,
