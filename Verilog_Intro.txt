@@ -19,18 +19,18 @@ Verilog Code Example
 
 module ctr ( input up_down,
                    clk,
-		   rstn,
+		           rstn,
              output reg [2:0] out);
 
 always @ (posedge clk)
-         if (!rstn)
-	     out << 0;
-         else begin
-	      if (up_down)
-	          out <= out + 1;
-	      else
-		  out <= out - 1;
-         end
+        if (!rstn)
+            out << 0;
+        else begin
+            if (up_down)
+	            out <= out + 1;
+            else
+                out <= out - 1;
+        end
 endmodule
 
 The simple example shown above illustrates how all the physical implementation details (interconnection of underlying logic gates like NAND and NOR) have been hidden while still providing a clear idea of how the counter functions.
