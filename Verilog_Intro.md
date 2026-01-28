@@ -1,4 +1,4 @@
-What is Verilog ?
+#What is Verilog ?
 
 Verilog is a hardware description language (HDL) that is used to describe digital systems and circuits in the form of code. It was developed by Gateway Design Automation in the mid-1980s and later acquired by Cadence Design Systems.
 
@@ -6,7 +6,7 @@ Verilog is widely used for design and verification of digital and mixed-signal s
 
 The language is used to describe digital circuits hierarchically, starting with the most basic elements such as logic gates and flip-flops and building up to more complex functional blocks and systems. It also supports a range of modeling techniques, including gate-level, RTL-level, and behavioral-level modeling.
 
-Why Verilog useful ?
+#Why Verilog useful ?
 
 Verilog creates a level of abstraction that helps hide away the details of its implementation and technology.
 
@@ -14,7 +14,7 @@ For example, the design of a D flip-flop would require the knowledge of how the 
 
 Verilog helps us to focus on the behaviour and leave the rest to be sorted out later. 
 
-Verilog Code Example:
+#Verilog Code Example:
 
 /*-------------------------------------------------------------------------------------------------*/
 module ctr ( input up_down,
