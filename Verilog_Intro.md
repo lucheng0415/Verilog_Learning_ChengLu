@@ -55,3 +55,55 @@ endmodule
 ```
 
 A module called tb with no input-output ports act as the top module for the simulation. The initial block starts and executes the first statement at time 0 units. $display is a Verilog system task used to display a formatted string to the console and cannot be synthesized into hardware. Its primarily used to help with testbench and design debug. In this case, the text message displayed onto the screen is "Hello World !".
+
+# Verilog Syntax
+Lexical conventions in Verilog are similar to C in the sense that it contains a stream of tokens. A lexical token may consist of one or more characters and tokens can be comments, keywords, numbers, strings or white space. All lines should be terminated by a semi-colon ;.
+
+## Comments
+There are two ways to write comments in Verilog.
+
+1. A single line comment starts with // and tells Verilog compiler to treat everything after this point to the end of the line as a comment.
+2. A multiple-line comment starts with /* and ends with */ and cannot be nested.
+
+However, single line comments can be nested in a multiple line comment.
+```
+// This is a single line comment
+
+integer a;   // Creates an int variable called a, and treats everything to the right of // as a comment
+
+/*
+This is a
+multiple-line or
+block comment
+*/
+
+/* This is /*
+an invalid nested
+block comment */
+*/
+
+/* However,
+// this one is okay
+*/
+
+// This is also okay
+///////////// Still okay
+```
+## Whitespace
+White space is a term used to represent the characters for spaces, tabs, newlines and formfeeds, and is usually ignored by Verilog except when it separates tokens. In fact, this helps in the indentation of code to make it easier to read. However blanks(spaces) and tabs (from TAB key) are not ignored in strings.
+
+## Operators
+There are three types of operators: unary, binary, and ternary or conditional.
+
+1. Unary operators shall appear to the left of their operand.
+2. Binary operators shall appear between their operands.
+3. Conditional operators have two separate operators that separate three operands.
+```
+x = ~y;                // ~ is a unary operator, and y is the operand
+x = y | z;             // | is a binary operator, where y and z are its operands
+x = (y > 5) ? w : z;   // ?: is a ternary operator, and the expression (y>5), w and z are its operands
+
+```
+If the expression (y > 5) is true, then variable x will get the value in w, else the value in z.
+
+
