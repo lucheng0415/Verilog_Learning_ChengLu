@@ -141,6 +141,38 @@ Uppercase letters are legal for number specification when the base format is hex
 ```
 
 ### Unsized
+Numbers without a base_format specification are decimal numbers by default. Numbers without a size specification have a default number of bits depending on the type of simulator and machine.
 
+```
+-6'd3;            // 8-bit negative number stored as two's complement of 3
+-6'sd9;           // For signed maths
+8'd-4;            // Illegal
+```
 
+## Strings
+A sequence of characters enclosed in a double quote " " is called a string. It cannot be split into multiple lines and every character in the string take 1-byte to be stored.
 
+```
+"Hello World!"        // String with 12 characters -> require 12 bytes
+"x + z"               // String with 5 characters
+
+"How are you
+feeling today ?"      // Illegal for a string to be split into multiple lines
+```
+
+## Identifiers
+Identifiers are names of variables so that they can be referenced later on. They are made up of alphanumeric characters [a-z][A-Z][0-9], underscores _ or dollar sign $ and are case sensitive. They cannot start with a digit or a dollar sign.
+
+```
+integer var_a;        // Identifier contains alphabets and underscore -> Valid
+integer $var_a;       // Identifier starts with $ -> Invalid
+integer v$ar_a;       // Identifier contains alphabets and $ -> Valid
+integer 2var;         // Identifier starts with a digit -> Invalid
+integer var23_g;      // Identifier contains alphanumeric characters and underscore -> Valid
+integer 23;           // Identifier contains only numbers -> Invalid
+```
+
+## Keywords
+Keywords are special identifiers reserved to define the language constructs and are in lower case. A list of important keywords is given below.
+
+![Verilog Keywords](images/verilog_keywords_2.png)
