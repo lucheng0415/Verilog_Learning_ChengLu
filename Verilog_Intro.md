@@ -106,4 +106,41 @@ x = (y > 5) ? w : z;   // ?: is a ternary operator, and the expression (y>5), w 
 ```
 If the expression (y > 5) is true, then variable x will get the value in w, else the value in z.
 
+## Number Format
+We are most familiar with numbers being represented as decimals. However, numbers can also be represented in binary, octal and hexadecimal. By default, Verilog simulators treat numbers as decimals. In order to represent them in a different radix, certain rules have to be followed.
+```
+16          // Number 16 in decimal
+0x10        // Number 16 in hexadecimal
+10000       // Number 16 in binary
+20          // Number 16 in octal
+```
+### Sized
+Sized numbers are represented as shown below, where size is written only in decimal to specify the number of bits in the number.
+```
+[size]'[base_format][number]
+```
+1. base_format can be either decimal ('d or 'D), hexadecimal ('h or 'H) and octal ('o or 'O) and specifies what base the number part represents.
+2. number is specified as consecutive digits from 0, 1, 2 ... 9 for decimal base format and 0, 1, 2 .. 9, A, B, C, D, E, F for hexadecimal.
+
+```
+3'b010;     // size is 3, base format is binary ('b), and the number is 010 (indicates value 2 in binary)
+3'd2;       // size is 3, base format is decimal ('d) and the number is 2 (specified in decimals)
+8'h70;      // size is 8, base format is hexadecimal ('h) and the number is 0x70 (in hex) to represent decimal 112
+9'h1FA;     // size is 9, base format is hexadecimal ('h) and the number is 0x1FA (in hex) to represent decimal 506
+
+4'hA = 4'd10 = 4'b1010 = 4'o12	// Decimal 10 can be represented in any of the four formats
+8'd234 = 8'D234                 // Legal to use either lower case or upper case for base format
+32'hFACE_47B2;                  // Underscore (_) can be used to separate 16 bit numbers for readability
+```
+Uppercase letters are legal for number specification when the base format is hexadecimal.
+
+```
+16'hcafe;         // lowercase letters Valid
+16'hCAFE;         // uppercase letters Valid
+32'h1D40_CAFE;    // underscore can be used as separator between 4 letters Valid
+```
+
+### Unsized
+
+
 
