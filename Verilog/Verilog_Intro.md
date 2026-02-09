@@ -201,10 +201,10 @@ The module dff represents a D flip flop which has three input ports d, clk, rstn
 
 ```
 // Module called "dff" has 3 inputs and 1 output port
-module dff ( 	input 			d,
-							input 			clk,
-							input 			rstn,
-							output reg	q);
+module dff (input   d,
+			input 	clk,
+			input 	rstn,
+			output  reg q);
 
 	// Contents of the module
 	always @ (posedge clk) begin
