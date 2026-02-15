@@ -11,7 +11,7 @@ z	represents a high-impedance state
 
 The following image shows how these values are represented in timing diagrams and simulation waveforms. Most simulators use this convention where red stands for X and orange in the middle stands for high-impedance or Z.
 
-![Values](Images/Values.png)
+![Values](images/Values.png)
 
 ## What does the verilog value-set imply ?
 Since Verilog is essentially used to describe hardware elements like flip-flops and combinational logic like NAND and NOR, it has to model the value system found in hardware. A logic one would represent the voltage supply Vdd which can range anywhere between 0.8V to more than 3V based on the fabrication technology node. A logic zero would represent ground and hence a value of 0V.
