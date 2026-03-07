@@ -23,24 +23,24 @@ As with any incomplete electric circuit, the wire that is not connected to anyth
 
 ## Data Type Comparison
 
-DataType	Width	                        Signed/Unsigned	                Primary Use	                            Synthesizable
-wire	    User-defined (default 1-bit)	Unsigned (4-state: 0,1,X,Z)     Connecting hardware elements (nets)	    Yes - represents physical wires
-reg	        User-defined (default 1-bit)	Unsigned (4-state: 0,1,X,Z)	    Procedural assignments, storage	        Yes - may infer flip-flops or combinational logic
-integer	    32 bits	                        Signed	                        Loop counters, arithmetic operations	Partial - primarily for testbenches
-time	    64 bits	                        Unsigned	                    Storing simulation time	                No - simulation only
-real	    64 bits (IEEE 754 double)	    Signed floating point	        Floating point calculations, delays	    No - simulation only
-realtime	64 bits (IEEE 754 double)	    Signed floating point	        High-precision time measurements	    No - simulation only
+DataType | Width | Signed/Unsigned | Primary Use | Synthesizable
+wire | User-defined (default 1-bit) | Unsigned (4-state: 0,1,X,Z) | Connecting hardware elements (nets) | Yes - represents physical wires
+reg | User-defined (default 1-bit) | Unsigned (4-state: 0,1,X,Z) | Procedural assignments, storage | Yes - may infer flip-flops or combinational logic
+integer | 32 bits | Signed | Loop counters, arithmetic operations |	Partial - primarily for testbenches
+time | 64 bits | Unsigned |	Storing simulation time | No - simulation only
+real | 64 bits (IEEE 754 double) | Signed floating point | Floating point calculations, delays | No - simulation only
+realtime | 64 bits (IEEE 754 double) | Signed floating point | High-precision time measurements | No - simulation only
 
 
 ## Nets vs Variables
-Aspect	            Nets (wire)	                                    Variables (reg)
-Hardware Model	    Physical wires connecting components	        Storage elements (flip-flops) or combinational logic
-Value Retention	    No storage - value driven by source	            Retains value until reassigned
-Assignment          Continuous assignment (assign)	                Procedural assignment (always, initial)
-Default Value	    Z (high-impedance)	                            X (unknown)
-Multiple Drivers	Allowed (resolves to X if conflicting)	        Not allowed - last assignment wins
-Example Use         Module interconnections, combinational outputs	Sequential logic outputs, procedural blocks
-Synthesis Result	Physical wires in netlist	                    Flip-flops (if clocked) or combinational gates
+Aspect | Nets (wire) | Variables (reg)
+Hardware Model | Physical wires connecting components | Storage elements (flip-flops) or combinational logic
+Value Retention | No storage - value driven by source | Retains value until reassigned
+Assignment | Continuous assignment (assign) | Procedural assignment (always, initial)
+Default Value | Z (high-impedance) | X (unknown)
+Multiple Drivers | Allowed (resolves to X if conflicting) | Not allowed - last assignment wins
+Example Use | Module interconnections, combinational outputs | Sequential logic outputs, procedural blocks
+Synthesis Result | Physical wires in netlist | Flip-flops (if clocked) or combinational gates
 
 ##  Real-World Application: Simulation vs Synthesis Data Types
 In verification testbenches, integer, time, real, and string types are extensively used for stimulus generation, scoreboarding, and performance measurement. For example, integer counters track transaction counts, real variables calculate bandwidth (Gbps), and time variables measure latency. However, synthesis tools ignore these types during RTL synthesis - only wire and reg (with their vectors) synthesize to actual hardware. Understanding this distinction prevents common mistakes where testbench code accidentally includes non-synthesizable types in design modules.
