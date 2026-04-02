@@ -1,0 +1,124 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_000001e05cf8a850 .scope module, "tb" "tb" 2 1;
+ .timescale 0 0;
+v000001e05d0a45d0_0 .var "clk", 0 0;
+v000001e05d0a3f90_0 .net "flag", 0 0, L_000001e05d0ab140;  1 drivers
+v000001e05d0a4670_0 .net "rdata", 15 0, L_000001e05d0a4350;  1 drivers
+v000001e05d0a4490_0 .var "rstn", 0 0;
+v000001e05d0a42b0_0 .var "sel", 0 0;
+v000001e05d0a4710_0 .var "wdata", 15 0;
+v000001e05d0a3c70_0 .var "wr", 0 0;
+S_000001e05cf8d260 .scope module, "dut" "des" 2 11, 3 7 0, S_000001e05cf8a850;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "clk";
+    .port_info 1 /INPUT 1 "rstn";
+    .port_info 2 /INPUT 1 "wr";
+    .port_info 3 /INPUT 1 "sel";
+    .port_info 4 /INPUT 16 "wdata";
+    .port_info 5 /OUTPUT 16 "rdata";
+    .port_info 6 /OUTPUT 1 "flag";
+L_000001e05d0ab060 .functor NOT 1, v000001e05d0a3c70_0, C4<0>, C4<0>, C4<0>;
+L_000001e05d0aace0 .functor AND 1, v000001e05d0a42b0_0, L_000001e05d0ab060, C4<1>, C4<1>;
+L_000001e05d0ab140 .functor BUFZ 1, v000001e05cf8d5d0_0, C4<0>, C4<0>, C4<0>;
+v000001e05cf8a9e0_0 .net *"_ivl_0", 0 0, L_000001e05d0ab060;  1 drivers
+v000001e05d072ee0_0 .net *"_ivl_2", 0 0, L_000001e05d0aace0;  1 drivers
+L_000001e05d0f5048 .functor BUFT 1, C4<0000000000000000>, C4<0>, C4<0>, C4<0>;
+v000001e05cf8d3f0_0 .net/2u *"_ivl_4", 15 0, L_000001e05d0f5048;  1 drivers
+v000001e05cf8d490_0 .net "clk", 0 0, v000001e05d0a45d0_0;  1 drivers
+v000001e05cf8d530_0 .net "flag", 0 0, L_000001e05d0ab140;  alias, 1 drivers
+v000001e05cf8d5d0_0 .var "iFlag", 0 0;
+v000001e05d0a34a0_0 .net "rdata", 15 0, L_000001e05d0a4350;  alias, 1 drivers
+v000001e05d0a3540_0 .var "register", 15 0;
+v000001e05d0a35e0_0 .net "rstn", 0 0, v000001e05d0a4490_0;  1 drivers
+v000001e05d0a3680_0 .net "sel", 0 0, v000001e05d0a42b0_0;  1 drivers
+v000001e05d0a3720_0 .net "wdata", 15 0, v000001e05d0a4710_0;  1 drivers
+v000001e05d0a37c0_0 .net "wr", 0 0, v000001e05d0a3c70_0;  1 drivers
+E_000001e05d096850 .event posedge, v000001e05cf8d490_0;
+L_000001e05d0a4350 .functor MUXZ 16, L_000001e05d0f5048, v000001e05d0a3540_0, L_000001e05d0aace0, C4<>;
+    .scope S_000001e05cf8d260;
+T_0 ;
+    %wait E_000001e05d096850;
+    %load/vec4 v000001e05cf8d5d0_0;
+    %inv;
+    %assign/vec4 v000001e05cf8d5d0_0, 0;
+    %load/vec4 v000001e05d0a35e0_0;
+    %inv;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_0.0, 8;
+    %pushi/vec4 0, 0, 16;
+    %assign/vec4 v000001e05d0a3540_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v000001e05cf8d5d0_0, 0;
+    %jmp T_0.1;
+T_0.0 ;
+    %load/vec4 v000001e05d0a3680_0;
+    %load/vec4 v000001e05d0a37c0_0;
+    %and;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_0.2, 8;
+    %load/vec4 v000001e05d0a3720_0;
+    %assign/vec4 v000001e05d0a3540_0, 0;
+T_0.2 ;
+T_0.1 ;
+    %vpi_call 3 28 "$display", "time=%0t register=%h", $time, v000001e05d0a3540_0 {0 0 0};
+    %jmp T_0;
+    .thread T_0;
+    .scope S_000001e05cf8a850;
+T_1 ;
+    %vpi_call 2 22 "$dumpfile", "RegisterVector.vcd" {0 0 0};
+    %vpi_call 2 23 "$dumpvars", 32'sb00000000000000000000000000000000, S_000001e05cf8d260 {0 0 0};
+    %end;
+    .thread T_1;
+    .scope S_000001e05cf8a850;
+T_2 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001e05d0a45d0_0, 0, 1;
+T_2.0 ;
+    %delay 5, 0;
+    %load/vec4 v000001e05d0a45d0_0;
+    %inv;
+    %store/vec4 v000001e05d0a45d0_0, 0, 1;
+    %jmp T_2.0;
+    %end;
+    .thread T_2;
+    .scope S_000001e05cf8a850;
+T_3 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001e05d0a4490_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001e05d0a3c70_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001e05d0a42b0_0, 0, 1;
+    %pushi/vec4 0, 0, 16;
+    %store/vec4 v000001e05d0a4710_0, 0, 16;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001e05d0a4490_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001e05d0a42b0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001e05d0a3c70_0, 0, 1;
+    %pushi/vec4 4660, 0, 16;
+    %store/vec4 v000001e05d0a4710_0, 0, 16;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001e05d0a3c70_0, 0, 1;
+    %delay 20, 0;
+    %vpi_call 2 47 "$finish" {0 0 0};
+    %end;
+    .thread T_3;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    ".\tb.v";
+    ".\RegisterVector.v";

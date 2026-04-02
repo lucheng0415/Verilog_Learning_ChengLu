@@ -1,0 +1,76 @@
+$date
+	Sat Mar 21 09:09:31 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module tb $end
+$scope module dut $end
+$var wire 1 ! clk $end
+$var wire 1 " flag $end
+$var wire 1 # rstn $end
+$var wire 1 $ sel $end
+$var wire 16 % wdata [15:0] $end
+$var wire 1 & wr $end
+$var wire 16 ' rdata [15:0] $end
+$var reg 1 ( iFlag $end
+$var reg 16 ) register [15:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+bx )
+x(
+b0 '
+0&
+b0 %
+0$
+0#
+x"
+0!
+$end
+#5
+0"
+0(
+b0 )
+1!
+#10
+0!
+1#
+#15
+1"
+1(
+1!
+#20
+0!
+b1001000110100 %
+1&
+1$
+#25
+b1001000110100 )
+0"
+0(
+1!
+#30
+b1001000110100 '
+0!
+0&
+#35
+1"
+1(
+1!
+#40
+0!
+#45
+0"
+0(
+1!
+#50
+0!
