@@ -1,0 +1,78 @@
+$date
+	Mon Apr 06 05:42:40 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module tb_latch $end
+$var wire 1 ! q $end
+$var reg 1 " d $end
+$var reg 3 # delay [2:0] $end
+$var reg 2 $ delay2 [1:0] $end
+$var reg 1 % en $end
+$var reg 1 & rstn $end
+$var integer 32 ' i [31:0] $end
+$scope module dl0 $end
+$var wire 1 " d $end
+$var wire 1 % en $end
+$var wire 1 & rstn $end
+$var reg 1 ! q $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+bx '
+0&
+0%
+bx $
+bx #
+0"
+0!
+$end
+#10
+1&
+b1 $
+b100 #
+b0 '
+#11
+1%
+#15
+b11 $
+b1 #
+b1 '
+#18
+0%
+#19
+1"
+b1 $
+b101 #
+b10 '
+#20
+1!
+1%
+#25
+0!
+0"
+b10 $
+b11 '
+#27
+0%
+#32
+1"
+b1 $
+b1 #
+b100 '
+#33
+1!
+1%
+#34
+0!
+0"
+b101 '

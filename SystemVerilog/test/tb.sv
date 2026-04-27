@@ -1,6 +1,6 @@
 module tb;
     logic [3:0] my_data;
-    wire en;
+    logic en;
     logic clk;
 
     assign en = my_data[0];
