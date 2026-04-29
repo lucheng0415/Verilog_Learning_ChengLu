@@ -4,12 +4,7 @@ module tb_dff;
 	reg rstn;
 	reg [2:0] delay;
     integer i;
-
-    dff  dff0 ( .d(d),
-                .rstn (rstn),
-                .clk (clk),
-                .q (q));
-
+        wire q;
     // Generate clock
     always #10 clk = ~clk;
 

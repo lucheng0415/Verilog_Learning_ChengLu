@@ -3,6 +3,7 @@ module tb_dff;
 	reg d;
 	reg rstn;
 	reg [2:0] delay;
+	wire q;
     integer i;
 
     dff  dff0 ( .d(d),

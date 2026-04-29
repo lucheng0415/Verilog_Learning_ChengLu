@@ -5,9 +5,9 @@ module d_latch ( input d,
 
     always @ (*) begin
         if (!rstn)
-            q <= 0;
+            q = 0;
         else if (en)
-            q <= d;
+            q = d;
     end
 
 endmodule

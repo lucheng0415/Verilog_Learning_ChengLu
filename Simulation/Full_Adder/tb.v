@@ -3,6 +3,7 @@ module tb_fulladd;
    reg [3:0] a;
    reg [3:0] b;
    reg c_in;
+   wire c_out;
    wire [3:0] sum;
    integer i;
 
@@ -29,7 +30,7 @@ module tb_fulladd;
       end
    end
 
-   // 4. Set 
+   // 4. Generate waveform dump
    initial begin
    $dumpfile("fa.vcd");
    $dumpvars(0, tb_fulladd);

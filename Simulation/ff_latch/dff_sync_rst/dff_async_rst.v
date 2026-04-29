@@ -3,7 +3,7 @@ module dff 	( input d,
               input clk,
               output reg q);
 
-	always @ (posedge clk)
+	always @ (posedge clk or negedge rstn)
        if (!rstn)
           q <= 0;
        else

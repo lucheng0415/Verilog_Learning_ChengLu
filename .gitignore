@@ -1,0 +1,29 @@
+# Simulation build artifacts
+work/
+obj_dir/
+simv
+simv.daidir
+verilator_waive.txt
+
+# Waveform files (keep these commented if you want to version them)
+# *.vcd
+# *.fst
+
+# Simulation outputs
+*.log
+*.wdb
+*.db
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IDE/Editor specific
+.vscode/
+.DS_Store
+
+# Temporary files
+*.swp
+*.swo
+*~

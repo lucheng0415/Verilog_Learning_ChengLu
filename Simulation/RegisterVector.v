@@ -15,12 +15,12 @@ module des (input         clk,
 reg iFlag;
 reg[15:0] register;
 always @ (posedge clk) begin
-	iFlag <= ~iFlag;
     if (~rstn) begin
         register <= 0;
 		iFlag <= 0;
 	end
     else begin
+        iFlag <= ~iFlag;
         if (sel & wr) begin
             register <= wdata;
 		end

@@ -53,9 +53,9 @@ repeat(2)@(posedge clk);
  @(posedge clk);
  addr = 2'b01;
  wdata = 16'h5678;
+ wr = 1;
 
  @(posedge clk); // Keeps 1 cycle to make sure addr 1 writes ok
- wr = 1;
  
  // read addr 0
  @(posedge clk);

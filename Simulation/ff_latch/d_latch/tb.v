@@ -5,6 +5,7 @@ module tb_latch;
    reg rstn;
    reg [2:0] delay;
    reg [1:0] delay2;
+   wire q;
    integer i;
 
    // Instantiate design and connect design ports with TB signals
