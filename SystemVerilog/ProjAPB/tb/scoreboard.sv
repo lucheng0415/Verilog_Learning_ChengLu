@@ -1,3 +1,5 @@
+import transaction_sv_unit::*;
+
 class apb_scoreboard;
     mailbox mon2scb;
     logic [31:0] expected_mem [logic [31:0]];  // Associative array for expected memory
@@ -7,8 +9,8 @@ class apb_scoreboard;
     endfunction
 
     task run();
-        apb_transaction trans;
         forever begin
+            apb_transaction trans;
             mon2scb.get(trans);
             if (trans.write) begin
                 // For write, update expected memory

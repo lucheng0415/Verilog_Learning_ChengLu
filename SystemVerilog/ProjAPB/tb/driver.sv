@@ -1,3 +1,5 @@
+import transaction_sv_unit::*;
+
 class apb_driver;
     virtual apb_if.master vif;
 

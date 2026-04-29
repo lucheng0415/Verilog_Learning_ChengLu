@@ -1,4 +1,9 @@
-program test(apb_if.master master_vif, apb_if.slave slave_vif);
+import transaction_sv_unit::*;
+import driver_sv_unit::*;
+import monitor_sv_unit::*;
+import scoreboard_sv_unit::*;
+
+module test(apb_if.master master_vif, apb_if.slave slave_vif);
     apb_driver driver;
     apb_monitor mon;
     apb_scoreboard scb;
@@ -35,30 +40,31 @@ program test(apb_if.master master_vif, apb_if.slave slave_vif);
     endtask
 
     task back_to_back();
+        logic [31:0] data1, data2;
         driver.apb_write(32'h4, 32'hAAAAAAAA);
         driver.apb_write(32'h8, 32'hBBBBBBBB);
-        logic [31:0] data1, data2;
         driver.apb_read(32'h4, data1);
         driver.apb_read(32'h8, data2);
     endtask
 
     task random_transactions();
-        for (int i = 0; i < 10; i++) begin
-            logic [31:0] addr = ($random % 8) * 4;  // Random word-aligned address 0,4,8,...,28
-            logic [31:0] data = $random;
+        logic [31:0] addr, data, read_data;
+        int i;
+        for (i = 0; i < 10; i++) begin
+            addr = ($random % 8) * 4;  // Random word-aligned address 0,4,8,...,28
+            data = $random;
             driver.apb_write(addr, data);
-            logic [31:0] read_data;
             driver.apb_read(addr, read_data);
         end
     endtask
 
     task byte_write();
+        logic [31:0] read_data;
         // Write byte 0 with 0xFF
         driver.apb_write(32'h10, 32'hFF, 4'b0001);
         // Write byte 1 with 0xFF (data needs byte 1 = 0xFF, so use 0xFF00)
         driver.apb_write(32'h10, 32'hFF00, 4'b0010);
-        logic [31:0] read_data;
         driver.apb_read(32'h10, read_data);
         // Expected: 0x0000FFFF (byte 0 = 0xFF, byte 1 = 0xFF)
     endtask
-endprogram
+endmodule

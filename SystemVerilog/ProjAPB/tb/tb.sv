@@ -9,8 +9,8 @@ module tb;
     // DUT
     top dut(.apb_bus(apb_bus));
 
-    // Test program
-    test t(apb_bus.master, apb_bus.slave);
+    // Test module
+    test t(.master_vif(apb_bus.master), .slave_vif(apb_bus.slave));
 
     // Clock generation
     initial begin

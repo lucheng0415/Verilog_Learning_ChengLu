@@ -1,0 +1,52 @@
+Reading pref.tcl
+
+# 2021.1
+
+# vsim -c tb -do "run -all; quit" 
+# Start time: 21:27:27 on Apr 29,2026
+# Loading sv_std.std
+# Loading work.tb
+# Loading work.apb_if
+# Loading work.top
+# Loading work.apb_master
+# Loading work.apb_slave
+# Loading work.transaction_sv_unit
+# Loading work.scoreboard_sv_unit
+# Loading work.monitor_sv_unit
+# Loading work.driver_sv_unit
+# Loading work.test_sv_unit
+# Loading work.test
+# run -all
+# Write recorded: addr=0x00000000, data=0x12345678, strb=0xf, expected=0x12345678
+# â?? Read match: addr=0x00000000, data=0x12345678
+# Write recorded: addr=0x00000004, data=0xaaaaaaaa, strb=0xf, expected=0xaaaaaaaa
+# Write recorded: addr=0x00000008, data=0xbbbbbbbb, strb=0xf, expected=0xbbbbbbbb
+# â?? Read match: addr=0x00000004, data=0xaaaaaaaa
+# â?? Read match: addr=0x00000008, data=0xbbbbbbbb
+# Write recorded: addr=0x00000010, data=0xc0895e81, strb=0xf, expected=0xc0895e81
+# â?? Read match: addr=0x00000010, data=0xc0895e81
+# Write recorded: addr=0xffffffe4, data=0xb1f05663, strb=0xf, expected=0xb1f05663
+# â?? Read match: addr=0xffffffe4, data=0xb1f05663
+# Write recorded: addr=0x00000014, data=0x46df998d, strb=0xf, expected=0x46df998d
+# â?? Read match: addr=0x00000014, data=0x46df998d
+# Write recorded: addr=0xfffffff4, data=0x89375212, strb=0xf, expected=0x89375212
+# â?? Read match: addr=0xfffffff4, data=0x89375212
+# Write recorded: addr=0x00000004, data=0x06d7cd0d, strb=0xf, expected=0x06d7cd0d
+# â?? Read match: addr=0x00000004, data=0x06d7cd0d
+# Write recorded: addr=0x00000018, data=0x1e8dcd3d, strb=0xf, expected=0x1e8dcd3d
+# â?? Read match: addr=0x00000018, data=0x1e8dcd3d
+# Write recorded: addr=0x00000014, data=0x462df78c, strb=0xf, expected=0x462df78c
+# â?? Read match: addr=0x00000014, data=0x462df78c
+# Write recorded: addr=0x00000004, data=0xe33724c6, strb=0xf, expected=0xe33724c6
+# â?? Read match: addr=0x00000004, data=0xe33724c6
+# Write recorded: addr=0xfffffff4, data=0xd513d2aa, strb=0xf, expected=0xd513d2aa
+# â?? Read match: addr=0xfffffff4, data=0xd513d2aa
+# Write recorded: addr=0x00000014, data=0xbbd27277, strb=0xf, expected=0xbbd27277
+# â?? Read match: addr=0x00000014, data=0xbbd27277
+# Write recorded: addr=0x00000010, data=0x000000ff, strb=0x1, expected=0xc0895eff
+# Write recorded: addr=0x00000010, data=0x0000ff00, strb=0x2, expected=0xc089ffff
+# â?? Read match: addr=0x00000010, data=0xc089ffff
+# ** Note: $finish    : tb/test.sv(33)
+#    Time: 995 ps  Iteration: 0  Instance: /tb/t
+# End time: 21:27:27 on Apr 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0

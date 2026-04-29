@@ -1,3 +1,5 @@
+import transaction_sv_unit::*;
+
 class apb_monitor;
     virtual apb_if.slave vif;
     mailbox mon2scb;
@@ -9,10 +11,11 @@ class apb_monitor;
 
     task run();
         forever begin
+            apb_transaction trans;
             // Wait for transaction
             @(posedge vif.PCLK);
             if (vif.PSEL && vif.PENABLE && vif.PREADY) begin
-                apb_transaction trans = new();
+                trans = new();
                 trans.addr = vif.PADDR;
                 trans.data = vif.PWRITE ? vif.PWDATA : vif.PRDATA;
                 trans.write = vif.PWRITE;
