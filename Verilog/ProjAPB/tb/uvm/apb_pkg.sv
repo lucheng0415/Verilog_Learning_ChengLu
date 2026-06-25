@@ -133,11 +133,11 @@ package apb_pkg;
 
         function new(string name, uvm_component parent);
             super.new(name, parent);
-            ap = new("ap", this);
         endfunction
 
         function void build_phase(uvm_phase phase);
             super.build_phase(phase);
+            ap = new("ap", this);
             if (!uvm_config_db#(virtual apb_if)::get(this, "", "vif", vif))
                 `uvm_fatal("MON", "Virtual interface not set for monitor")
         endfunction

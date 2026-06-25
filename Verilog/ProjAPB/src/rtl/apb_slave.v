@@ -32,13 +32,13 @@ module apb_slave (
 
         if (PSEL && PENABLE) begin
             if (PWRITE) begin
-                // Write address bounds check (PADDR[4:2] is 3 bits => always in range)
-                if (PADDR[4:2] >= 4'd8) begin
+                // Out-of-range: any address above 0x1C, or unaligned
+                if (PADDR[31:5] != 27'h0 || PADDR[1:0] != 2'b00) begin
                     PSLVERR = 1'b1;
                 end
             end else begin
-                // Read mux
-                if (PADDR[4:2] < 4'd8) begin
+                // Read mux — valid window is 0x00..0x1C, word-aligned
+                if (PADDR[31:5] == 27'h0 && PADDR[1:0] == 2'b00) begin
                     PRDATA = registers[PADDR[4:2]];
                 end else begin
                     PSLVERR = 1'b1;
@@ -53,12 +53,11 @@ module apb_slave (
             for (j = 0; j < 8; j = j + 1) begin
                 registers[j] <= 32'h0;
             end
-        end else if (PSEL && PENABLE && PWRITE && PREADY) begin
-            if (PADDR[4:2] < 4'd8) begin
-                for (j = 0; j < 4; j = j + 1) begin
-                    if (PSTRB[j]) begin
-                        registers[PADDR[4:2]][j*8 +: 8] <= PWDATA[j*8 +: 8];
-                    end
+        end else if (PSEL && PENABLE && PWRITE && PREADY &&
+                     PADDR[31:5] == 27'h0 && PADDR[1:0] == 2'b00) begin
+            for (j = 0; j < 4; j = j + 1) begin
+                if (PSTRB[j]) begin
+                    registers[PADDR[4:2]][j*8 +: 8] <= PWDATA[j*8 +: 8];
                 end
             end
         end

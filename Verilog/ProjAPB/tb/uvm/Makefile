@@ -10,9 +10,7 @@ RTL_DIR := ../../src/rtl
 TB_DIR  := .
 
 RTL_FILES := \
-    $(RTL_DIR)/apb_slave.v \
-    $(RTL_DIR)/apb_master.v \
-    $(RTL_DIR)/top.v
+    $(RTL_DIR)/apb_slave.v
 
 TB_FILES := \
     $(TB_DIR)/apb_if.sv \
