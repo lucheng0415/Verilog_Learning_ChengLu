@@ -18,10 +18,12 @@ task my_driver::main_phase(uvm_phase phase);
 
     // send 256 random data to the DUT
     for(int i = 0; i < 256; i++)begin
+       bit [7:0] data;
        @(posedge top_tb.clk);
-       top_tb.rxd <= $urandom_range(0, 255);
+       data = $urandom_range(0, 255);
+       top_tb.rxd <= data;
        top_tb.rx_dv <= 1'b1;
-       `uvm_info("my_driver", "data is drived", UVM_LOW);
+       `uvm_info("my_driver", $sformatf("beat %0d: data drived = 0x%0h", i, data), UVM_LOW);
     end
     // deassert rx_dv one cycle after the last data beat to close out the transfer
     @(posedge top_tb.clk);
