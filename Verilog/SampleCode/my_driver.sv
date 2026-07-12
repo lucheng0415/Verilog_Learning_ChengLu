@@ -7,6 +7,20 @@ class my_driver extends uvm_driver;
     extern virtual task main_phase(uvm_phase phase);
 endclass
 
+class my_test extends uvm_test;
+    `uvm_component_utils(my_test)
+    my_driver drv;
+
+    function new(string name = "my_test", uvm_component parent = null);
+        super.new(name, parent);
+    endfunction
+
+    function void build_phase(uvm_phase phase);
+        super.build_phase(phase);
+        drv = my_driver::type_id::create("drv", this);
+    endfunction
+endclass
+
 task my_driver::main_phase(uvm_phase phase);
     phase.raise_objection(this);
     `uvm_info("my_driver", "main_phase is called", UVM_LOW);
@@ -30,20 +44,6 @@ task my_driver::main_phase(uvm_phase phase);
     top_tb.rx_dv <= 1'b0;
     phase.drop_objection(this);
 endtask
-
-class my_test extends uvm_test;
-    `uvm_component_utils(my_test)
-    my_driver drv;
-
-    function new(string name = "my_test", uvm_component parent = null);
-        super.new(name, parent);
-    endfunction
-
-    function void build_phase(uvm_phase phase);
-        super.build_phase(phase);
-        drv = my_driver::type_id::create("drv", this);
-    endfunction
-endclass
 
 `timescale 1ns/1ps
 `include "uvm_macros.svh"
