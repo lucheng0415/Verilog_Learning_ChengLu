@@ -27,3 +27,7 @@ __pycache__/
 *.swp
 *.swo
 *~
+
+# Local tool settings (machine-specific, not part of the project)
+.claude/
+_stale_locks/
