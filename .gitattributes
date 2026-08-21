@@ -1,0 +1,9 @@
+# Normalise line endings: store LF in the repository, check out LF everywhere.
+# Prevents whole-tree CRLF churn when the repo is edited from Windows.
+* text=auto eol=lf
+
+# Binary / waveform artefacts must never be line-ending converted
+*.vcd  -text
+*.fst  -text
+*.png  binary
+*.svg  text eol=lf
